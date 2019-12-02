@@ -14,7 +14,7 @@ class App extends Component {
   };
 
   calcButtonClickHandler = (orderStr) => {
-    if (this.state.operation.length == 0 && this.state.operations.includes(orderStr)) {
+    if (this.state.operation.length === 0 && this.state.operations.includes(orderStr)) {
       return;
     }
 
@@ -30,7 +30,7 @@ class App extends Component {
     let number = '', result = 0, arithmeticFunction = '+';
 
     for (let i = 0; i < this.state.operation.length; i++) {
-      if (this.state.numbers.includes(parseInt(this.state.operation[i])) && i != this.state.operation.length - 1) {
+      if (this.state.numbers.includes(parseInt(this.state.operation[i])) && i !== this.state.operation.length - 1) {
         number += this.state.operation[i];
       } else if (this.state.numbers.includes(parseInt(this.state.operation[i]))) {
         number += this.state.operation[i];
@@ -70,6 +70,13 @@ class App extends Component {
     });
   };
 
+  clearButtonClickHandler = () => { 
+    this.setState({
+      operation: '',
+      result: 0
+    });
+  };
+
   //Generates the Calculator Keyboard
   generateKeyboard = () => {
     return (
@@ -78,9 +85,11 @@ class App extends Component {
           this.state.operations.map(op => {
             if (op === '=') {
               return <Button text={op} clicked={() => this.resultButtonClickHandler()} key={op}></Button>;
+            } else if (op === 'Clear') {
+              return <Button text={op} clicked={() => this.clearButtonClickHandler()} key={op}></Button>;
             } else {
-              return <Button text={op} clicked={() => this.calcButtonClickHandler(op)} key={op}></Button>;
-            }
+                return <Button text={op} clicked={() => this.calcButtonClickHandler(op)} key={op}></Button>;
+              }
           })
         }
         {
@@ -97,8 +106,6 @@ class App extends Component {
       <div className="App">
         <Display opDescription={this.state.operation.length === 0 ? this.state.result : this.state.operation }></Display>
         {this.generateKeyboard()}
-        {console.log(this.state.operation)}
-        {console.log(this.state.result)}
       </div>
     );
   }
