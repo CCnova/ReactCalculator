@@ -1,13 +1,13 @@
 // display class is responsible for showing
 // the operation and the results
-
-
 import React from 'react';
+
+import "./Display.css";
 
 const display = ( props ) => {
     return (
         <div>
-            <p>{ props.opDescription }</p>
+            <p className="calculatorDisplay">{ props.opDescription }</p>
         </div>
     );
 };

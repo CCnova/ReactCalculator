@@ -3,10 +3,12 @@
 
 import React from 'react';
 
+import "./Button.css";
+
 const button = (props) => {
     return (
         <div>
-            <button onClick={ props.clicked } type="button">{ props.text }</button>
+            <button className="calculatorButtons" onClick={ props.clicked } type="button">{ props.text }</button>
             {/* <p>{props.text}</p> */}
         </div>
     );

@@ -80,7 +80,7 @@ class App extends Component {
   //Generates the Calculator Keyboard
   generateKeyboard = () => {
     return (
-      <div>
+      <div className="grid">
         {
           this.state.operations.map(op => {
             if (op === '=') {
@@ -88,7 +88,7 @@ class App extends Component {
             } else if (op === 'Clear') {
               return <Button text={op} clicked={() => this.clearButtonClickHandler()} key={op}></Button>;
             } else {
-                return <Button text={op} clicked={() => this.calcButtonClickHandler(op)} key={op}></Button>;
+              return <Button text={op} clicked={() => this.calcButtonClickHandler(op)} key={op}></Button>;
               }
           })
         }
@@ -103,7 +103,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App calculator">
         <Display opDescription={this.state.operation.length === 0 ? this.state.result : this.state.operation }></Display>
         {this.generateKeyboard()}
       </div>
