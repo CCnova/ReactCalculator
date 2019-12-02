@@ -7,7 +7,7 @@ import React from 'react';
 const display = ( props ) => {
     return (
         <div>
-            <p>{ props.opResult }</p>
+            <p>{ props.opDescription }</p>
         </div>
     );
 };
